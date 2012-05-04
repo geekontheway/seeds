@@ -1,6 +1,6 @@
 module Seeds
   class Sow
-    def help
+    def self.help #Self Help eh? NICE!
       puts "SHOW ME SOME HELP!"
     end
   end

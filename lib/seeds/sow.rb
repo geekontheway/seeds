@@ -3,6 +3,7 @@ module Seeds
     
     @@models_to_dump = {}
     @@drop_fields = []
+    @@file_mode = 'w'
     
     def self.sow options = {}
       if options.has_key?(:help)

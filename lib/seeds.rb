@@ -2,6 +2,7 @@ require "seeds/version"
 require "seeds/sow"
 require "seeds/process_options"
 require "seeds/generate_seeds"
+require "seeds/help"
 
 module Seeds
   class Railtie < ::Rails::Railtie

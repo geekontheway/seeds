@@ -48,6 +48,15 @@ module Seeds
         @@drop_fields<< "created_at"
         @@drop_fields<< "updated_at"
       end
+      if options.has_key?(:file_mode)
+        if options[:file_mode] == 'write'
+          @@file_mode = 'w'
+        elsif options[:file_mode] == 'append'
+          @@file_mode = 'a'
+        end
+      else
+        @@file_mode = 'w'
+      end
     end
   end
 end

@@ -46,6 +46,11 @@ To drop a predefined "common" set of fields (id,created_at,updated_at)
 
     $ rake seeds:sow['{:drop_fields_common => true}']
     
+To rewrite or append to seeds.rb file
+
+    $ rake seeds:sow['{:file_mode => "write"}'] # Rewrite the file, this is the default
+    $ rake seeds:sow['{:file_mode => "write"}'] # Append to the existing file, commonly used with :drop_fields_common => true
+    
 Example sending multiple options
 
     $ rake seeds:sow['{:drop_fields_common => true, :drop_fields => "Field1,Field2", :include => "ModelName,ModelName"}']

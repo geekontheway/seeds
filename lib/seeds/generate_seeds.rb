@@ -1,6 +1,7 @@
 module Seeds
   class Sow
     def self.generate_seeds
+      file = File.open("#{Rails.root}/db/seeds.rb", @@file_mode)
       @@models_to_dump.each do |model_name, truefalse|
         seeds = []
         seeds << "#Dumping model [#{model_name}]"
@@ -20,8 +21,9 @@ module Seeds
           puts e
         end
         seeds << "#Finished dumping model [#{model_name}] Records:#{seeds.size - 1}"
-        File.open("#{Rails.root}/db/seeds.rb", "a"){ |f| seeds.each{ |s| f.puts s} }
+        seeds.each{ |s| file.puts s}
       end
+      file.close
     end
   end
 end
