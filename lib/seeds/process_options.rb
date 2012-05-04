@@ -4,13 +4,13 @@ module Seeds
     def self.process_options options = {}
       models_to_dump = {}
       if options.has_key?(:include)
-        include_models = options[:include].split(",")
+        include_models = options[:include].split(" ")
         include_models.each_with_index do |item,index|
           include_models[index] = item.underscore.singularize.camelize
         end
       end
       if options.has_key?(:exclude)
-        exclude_models = options[:exclude].split(",")
+        exclude_models = options[:exclude].split(" ")
         exclude_models.each_with_index do |item,index|
           exclude_models[index] = item.underscore.singularize.camelize
         end
@@ -35,10 +35,11 @@ module Seeds
           end
         end
       elsif options.has_key?(:include) && options.has_key?(:exclude)
-        #Complicated! I will implement this soon!
+        puts "There is no reason to use :include and :exclude at the same time.\n What would it do?\nWhy would it be useful?"
+        puts "If you can answer those questions, write the code and submit a pull request!"
       end
       if options.has_key?(:drop_fields)
-        fields_to_drop = options[:drop_fields].split(",")
+        fields_to_drop = options[:drop_fields].split(" ")
         fields_to_drop.each do |item|
           @@drop_fields<< item
         end

@@ -38,17 +38,17 @@ To only exclude certain Models (this should work using table names also, but it'
 
     $ rake seeds:sow['{:exclude => "Modelname,ModelName"}']
     
-To drop specific fields from all Model dumps
+To drop specific fields from all Model dumps, can be used with :drop_fields_common
 
     $ rake seeds:sow['{:drop_fields => "Field1,Field2"}']
     
-To drop a predefined "common" set of fields (id,created_at,updated_at)
+To drop a predefined "common" set of fields (id, created_at, updated_at), can be used with :drop_fields
 
     $ rake seeds:sow['{:drop_fields_common => true}']
     
-To rewrite or append to seeds.rb file
+To rewrite or append to seeds.rb file.  If option is not passed, write is assumed.
 
-    $ rake seeds:sow['{:file_mode => "write"}'] # Rewrite the file, this is the default
+    $ rake seeds:sow['{:file_mode => "write"}'] # Write the file, this is the default
     $ rake seeds:sow['{:file_mode => "write"}'] # Append to the existing file, commonly used with :drop_fields_common => true
     
 Example sending multiple options
