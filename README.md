@@ -57,3 +57,7 @@ Example sending multiple options
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Thank you to Contributors
+
+krisleech - Fixed issue #1! Thanks man, can't believe I missed that, pretty embarrassing :)
