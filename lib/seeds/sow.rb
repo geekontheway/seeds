@@ -1,6 +1,15 @@
 module Seeds
   class Sow
+    
+    @@models_to_dump = {}
+    @@drop_fields = []
+    
     def self.sow options = {}
+      process_options options
+      generate_seeds
+    end
+    
+    def self.process_options options = {}
       models_to_dump = {}
       if options.has_key?(:include)
         include_models = options[:include].split(",")
@@ -17,39 +26,39 @@ module Seeds
       if !options.has_key?(:include) && !options.has_key?(:exclude)
         ActiveRecord::Base.connection.tables.collect do |table_name|
           model_name = table_name.underscore.singularize.camelize
-            models_to_dump[model_name] = true 
+            @@models_to_dump[model_name] = true 
         end
       elsif options.has_key?(:include) && !options.has_key?(:exclude)
         ActiveRecord::Base.connection.tables.collect do |table_name|
           model_name = table_name.underscore.singularize.camelize
           if include_models.include?(model_name)
-            models_to_dump[model_name] = true
+            @@models_to_dump[model_name] = true
           end 
         end
       elsif options.has_key?(:exclude) && !options.has_key?(:include)
         ActiveRecord::Base.connection.tables.collect do |table_name|
           model_name = table_name.underscore.singularize.camelize
           if !exclude_models.include?(model_name)
-            models_to_dump[model_name] = true
+            @@models_to_dump[model_name] = true
           end
         end
       elsif options.has_key?(:include) && options.has_key?(:exclude)
         #Complicated! I will implement this soon!
       end
-      drop_fields = []
       if options.has_key?(:drop_fields)
         fields_to_drop = options[:drop_fields].split(",")
         fields_to_drop.each do |item|
-          drop_fields<< item
+          @@drop_fields<< item
         end
       end
       if options.has_key?(:drop_fields_common)
-        drop_fields<< "id"
-        drop_fields<< "created_at"
-        drop_fields<< "updated_at"
+        @@drop_fields<< "id"
+        @@drop_fields<< "created_at"
+        @@drop_fields<< "updated_at"
       end
-      
-      models_to_dump.each do |model_name, truefalse|
+    end
+    def self.generate_seeds
+      @@models_to_dump.each do |model_name, truefalse|
         seeds = []
         seeds << "#Dumping model [#{model_name}]"
         begin
@@ -57,7 +66,7 @@ module Seeds
             unless r.to_s == 'SchemaMigrations'
                 attributes_hash = []
                 r.attributes.collect do |attr|
-                  unless drop_fields.size > 0 && drop_fields.include?(attr[0])
+                  unless @@drop_fields.size > 0 && @@drop_fields.include?(attr[0])
                     attributes_hash << ":#{attr[0]} => %q[#{attr[1]}]"
                   end
                 end
