@@ -7,21 +7,21 @@ module Seeds
         opts.banner = "Usage: optparse1.rb [options] file1 file2 ..."
         
         # Define the options, and what they do
-        seeds.options[:verbose] = false
+        @options[:verbose] = false
         opts.on( '-v', '--version', 'Output the version' ) do
           puts "Seeds v#{Seeds::VERSION}"
-          exit
+          exit!
         end
         
         opts.on("-l", "--large lSku1,lSku2,lSkuN", Array, "Large SKUs - List CSVs") do |l|
-          seeds.options[:large_skus] = l
+          @options[:large_skus] = l
         end
         
         # This displays the help screen, all programs are
          # assumed to have this option.
          opts.on( '-h', '--help', 'Display this screen' ) do
            puts opts
-           exit
+           exit!
          end
       end
       
@@ -29,7 +29,8 @@ module Seeds
       begin
         optparse.parse!
       rescue Exception => e
-        puts e  
+        puts e
+        exit!
       end
     end
   end
