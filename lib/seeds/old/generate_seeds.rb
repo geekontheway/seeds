@@ -1,4 +1,4 @@
-module Seeds
+module SeedsDep
   class Sow
     def self.generate_seeds
       file = File.open("#{Rails.root}/db/seeds.rb", @@file_mode)

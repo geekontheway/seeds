@@ -1,4 +1,4 @@
-module Seeds
+module SeedsDep
   class Sow
     def self.process_options options = {}
       models_to_dump = {}

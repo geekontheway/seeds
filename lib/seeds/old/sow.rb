@@ -1,4 +1,4 @@
-module Seeds
+module SeedsDep
   class Sow
     
     @@models_to_dump = {}
@@ -6,7 +6,9 @@ module Seeds
     @@file_mode = 'w'
     
     def self.sow options = {}
-      puts "You are using the deprecated version of this gem."
+      puts "WARNING!!!!! You are using the deprecated syntax for this gem."
+      puts "No new features will be added to this syntax"
+      puts "Please visit http://github.com/coreydaley/seeds to view the current documentation."
       if options.has_key?(:help)
         help
         exit

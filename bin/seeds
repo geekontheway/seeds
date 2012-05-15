@@ -1,10 +1,23 @@
 #!/usr/bin/env ruby
+
+#Include any external gems we need
+require 'optparse'
+
+#Load our lib folder so we can access it relatively
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+
+#Internal includes, all of our modules and classes
 require "seeds/version"
 require "seeds/sow"
 require "seeds/process_options"
 require "seeds/generate_seeds"
-require "seeds/help"
-require Dir.pwd + "/config/environment"
-Seeds::Sow.sow
-exit
+
+
+seeds = Seeds::Sow.new
+# This hash will hold all of the options
+ # parsed from the command-line by
+ # OptionParser.
+ seeds.options = {}
+ 
+seeds.parse_options
+ 
