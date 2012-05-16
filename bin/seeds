@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+#What time did we start running?
+start_time = Time.now
 #Include any external gems we need
 require 'optparse'
 
@@ -9,15 +11,13 @@ $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 #Internal includes, all of our modules and classes
 require "seeds/version"
 require "seeds/sow"
-require "seeds/process_options"
+require "seeds/parse_options"
 require "seeds/generate_seeds"
 
 
+puts "Initializing Seeds gem... #{Time.now - start_time}"
 seeds = Seeds::Sow.new
-# This hash will hold all of the options
- # parsed from the command-line by
- # OptionParser.
- seeds.options = {}
- 
+puts "Parsing command line options..."
 seeds.parse_options
- 
+puts "Loading Rails environment..."
+require Dir.pwd + '/config/environment'

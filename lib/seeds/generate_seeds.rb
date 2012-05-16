@@ -2,7 +2,7 @@ module Seeds
   class Sow
     def generate_seeds
       file = File.open("#{Rails.root}/db/seeds.rb", @@file_mode)
-      @@models_to_dump.each do |model_name, truefalse|
+      @models_to_dump.each do |model_name, truefalse|
         seeds = []
         seeds << "#Dumping model [#{model_name}]"
         begin
