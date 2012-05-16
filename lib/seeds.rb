@@ -2,7 +2,7 @@
 #This rake task and everything in the lib/old folder will be going away soon!
 require "seeds/version"
 require "seeds/old/sow"
-module SeedsDep
+module Seeds
   class Railtie < ::Rails::Railtie
     rake_tasks do
       namespace :seeds do

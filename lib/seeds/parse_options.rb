@@ -12,8 +12,14 @@ module Seeds
           exit!
         end
         
-        opts.on("-l", "--large lSku1,lSku2,lSkuN", Array, "Large SKUs - List CSVs") do |l|
-          @options[:large_skus] = l
+        #Models that we want to specifically include
+        opts.on("-i", "--include Model1,Model2,Model3", Array, "Models that we want to specifically include") do |l|
+          @options[:include] = l
+        end
+        
+        #Models that we want to specifically exclude
+        opts.on("-e", "--exclude Model1,Model2,Model3", Array, "Models that we want to specifically exclude") do |l|
+          @options[:include] = l
         end
         
         # This displays the help screen, all programs are

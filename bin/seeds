@@ -13,11 +13,12 @@ require "seeds/version"
 require "seeds/sow"
 require "seeds/parse_options"
 require "seeds/generate_seeds"
-require "seeds/timer"
+
 
 puts "Initializing Seeds gem... "
 seeds = Seeds::Sow.new
 puts "Parsing command line options..."
 seeds.parse_options
-puts "Loading Rails environment..."
-require Dir.pwd + '/config/environment'
+puts seeds.options
+#puts "Loading Rails environment..."
+#require Dir.pwd + '/config/environment'
