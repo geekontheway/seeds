@@ -2,7 +2,7 @@ module Seeds
   class Sow
     #Initialize our options hash
     def initialize 
-      @options = {}
+      @options = {:exclude => ["SchemaMigration"]}
       @models_to_dump = {}
       @drop_fields = []
     end

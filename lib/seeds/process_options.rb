@@ -17,7 +17,7 @@ module Seeds
       if !@options.has_key?(:include) && !@options.has_key?(:exclude)
         ActiveRecord::Base.connection.tables.collect do |table_name|
           model_name = table_name.underscore.singularize.camelize
-            @models_to_dump[model_name] = true 
+          @models_to_dump[model_name] = true 
         end
       elsif @options.has_key?(:include) && !@options.has_key?(:exclude)
         ActiveRecord::Base.connection.tables.collect do |table_name|
@@ -34,8 +34,12 @@ module Seeds
           end
         end
       elsif @options.has_key?(:include) && @options.has_key?(:exclude)
-        puts "There is no reason to use :include and :exclude at the same time.\n What would it do?\nWhy would it be useful?"
-        puts "If you can answer those questions, write the code and submit a pull request!"
+        @options[:include].each_with_index do |item,index|
+          if !@options[:exclude].include?(item)
+            model_name = item.underscore.singularize.camelize
+            @models_to_dump[model_name] = true
+          end
+        end
       end
       if @options.has_key?(:drop_fields)
         @options[:drop_fields].each do |item|

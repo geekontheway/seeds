@@ -1,7 +1,6 @@
 #Deprecated internal includes, all of our modules and classes
 #This rake task and everything in the lib/old folder will be going away soon!
 require "seeds/version"
-require "seeds/old/sow"
 module Seeds
   class Railtie < ::Rails::Railtie
     rake_tasks do

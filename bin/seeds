@@ -18,10 +18,11 @@ require "seeds/generate_seeds"
 
 puts "Initializing Seeds gem... "
 seeds = Seeds::Sow.new
-puts "Parsing command line options..."
+puts "Parsing arguments..."
 seeds.parse_options
-puts seeds.options
 puts "Loading Rails environment..."
 require Dir.pwd + '/config/environment'
+puts "Processing arguments..."
 seeds.process_options
+puts "Generating seeds.rb file..."
 seeds.generate_seeds

@@ -5,9 +5,10 @@ module Seeds
       @models_to_dump.each do |model_name, truefalse|
         seeds = []
         seeds << "#Dumping model [#{model_name}]"
+        puts "Processing model #{model_name}..."
         begin
           model_name.constantize.all.each do |r|
-            unless r.to_s == 'SchemaMigrations'
+            unless r.to_s == 'SchemaMigration'
                 attributes_hash = []
                 r.attributes.collect do |attr|
                   unless @drop_fields.size > 0 && @drop_fields.include?(attr[0])
