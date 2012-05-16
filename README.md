@@ -72,4 +72,5 @@ Example sending multiple options
 ## Thank you to Contributors
 
 ernie - For mentoring me all these years and always being there to give me a good kick in the pants when I need it most.
+
 krisleech - Fixed issue #1! Thanks man, can't believe I missed that, pretty embarrassing :)
