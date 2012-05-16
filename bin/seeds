@@ -12,6 +12,7 @@ $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 require "seeds/version"
 require "seeds/sow"
 require "seeds/parse_options"
+require "seeds/process_options"
 require "seeds/generate_seeds"
 
 
@@ -20,5 +21,7 @@ seeds = Seeds::Sow.new
 puts "Parsing command line options..."
 seeds.parse_options
 puts seeds.options
-#puts "Loading Rails environment..."
-#require Dir.pwd + '/config/environment'
+puts "Loading Rails environment..."
+require Dir.pwd + '/config/environment'
+seeds.process_options
+seeds.generate_seeds
