@@ -19,24 +19,24 @@ module Seeds
         
         # Models that we want to specifically exclude
         opts.on("--exclude Model1,Model2,Model3", Array, "Models that we want to specifically exclude") do |options|
-          @options[:include] = options
+          @options[:exclude] = options
         end
         
         # Fields that we want to drop from all Models
-        opts.on("--drop_fields field1,field2,field3", Array, "Fields that we want to drop from all Models") do |options|
-          @options[:include] = options
+        opts.on("--drop-fields field1,field2,field3", Array, "Fields that we want to drop from all Models") do |options|
+          @options[:drop_fields] = options
         end
         
         # Exclude commonly dropped fields
         @options[:drop_fields_common] = false
-        opts.on('--drop_fields_common', 'Exclude commonly dropped fields (id, created_at, updated_at)') do
+        opts.on('--drop-fields-common', 'Exclude commonly dropped fields (id, created_at, updated_at)') do
           @options[:drop_fields_common] = true
         end
         
         # Set the seeds.rb file write mode
         @options[:file_mode] = 'w'
         @options[:drop_fields_common] = false
-        opts.on('--file_mode write|append', String ,'File write mode, default is write')  do |options|
+        opts.on('--file-mode write|append', String ,'File write mode, default is write')  do |options|
           if options.downcase == 'append'
             @options[:file_mode] = 'a'
           elsif options.downcase == 'write'

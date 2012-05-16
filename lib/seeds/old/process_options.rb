@@ -34,7 +34,7 @@ module SeedsDep
           end
         end
       elsif options.has_key?(:include) && options.has_key?(:exclude)
-        puts "There is no reason to use :include and :exclude at the same time.\n What would it do?\nWhy would it be useful?"
+        puts "There is no reason to use --include and --exclude at the same time.\nWhat would it do?\nWhy would it be useful?"
         puts "If you can answer those questions, write the code and submit a pull request!"
       end
       if options.has_key?(:drop_fields)

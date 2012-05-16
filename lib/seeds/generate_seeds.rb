@@ -10,7 +10,7 @@ module Seeds
             unless r.to_s == 'SchemaMigrations'
                 attributes_hash = []
                 r.attributes.collect do |attr|
-                  unless @@drop_fields.size > 0 && @@drop_fields.include?(attr[0])
+                  unless @drop_fields.size > 0 && @drop_fields.include?(attr[0])
                     attributes_hash << ":#{attr[0]} => %q[#{attr[1]}]"
                   end
                 end

@@ -4,6 +4,8 @@ A feature filled way to generate your db/seeds.rb file from your existing databa
 I will be adding many more features and updating the way that the current features work very soon.
 But for now, this should be a nice and easy way to generate a seeds.rb file!
 
+This gem has been completely overhauled and can now be run from the command line using standard linux/unix command syntax.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -28,32 +30,36 @@ eval'd before being passed on to the Seeds Module.
 
 To create a seeds.rb file that includes data from all of your Models
 
-    $ rake seeds:sow
+    $ seeds
+    
+To display the Seeds help file
+
+    $ seeds--help
     
 To only include certain Models (this should work using table names also, but it's not tested yet)
 
-    $ rake seeds:sow['{:include => "ModelName ModelName"}']
+    $ seed --include Model1,Model2,Model3
 
 To only exclude certain Models (this should work using table names also, but it's not tested yet)
 
-    $ rake seeds:sow['{:exclude => "Modelname ModelName"}']
+    $ seeds --exclude Model1,Model2,Model3
     
-To drop specific fields from all Model dumps, can be used with :drop_fields_common
+To drop specific fields from all Model dumps, can be used with --drop-fields-common
 
-    $ rake seeds:sow['{:drop_fields => "Field1 Field2"}']
+    $ seeds --drop-fields Field1,Field2,Field3
     
-To drop a predefined "common" set of fields (id, created_at, updated_at), can be used with :drop_fields
+To drop a predefined "common" set of fields (id, created_at, updated_at), can be used with --drop-fields
 
-    $ rake seeds:sow['{:drop_fields_common => true}']
+    $ seeds --drop-fields-common
     
 To rewrite or append to seeds.rb file.  If option is not passed, write is assumed.
 
-    $ rake seeds:sow['{:file_mode => "write"}'] # Write the file, this is the default
-    $ rake seeds:sow['{:file_mode => "write"}'] # Append to the existing file, commonly used with :drop_fields_common => true
+    $ seeds --file-mode write # Write the file, this is the default
+    $ seeds --file-model append # Append to the existing file, commonly used with --drop-fields-common
     
 Example sending multiple options
 
-    $ rake seeds:sow['{:drop_fields_common => true, :drop_fields => "Field1 Field2", :include => "ModelName ModelName"}']
+    $ seeds --drop-fields-common --drop-fields Field1 Field2 --include ModelName ModelName
     
 ## Contributing
 
@@ -65,4 +71,5 @@ Example sending multiple options
 
 ## Thank you to Contributors
 
+ernie - For mentoring me all these years and always being there to give me a good kick in the pants when I need it most.
 krisleech - Fixed issue #1! Thanks man, can't believe I missed that, pretty embarrassing :)
