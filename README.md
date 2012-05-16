@@ -34,13 +34,13 @@ To create a seeds.rb file that includes data from all of your Models
     
 To display the Seeds help file
 
-    $ seeds--help
+    $ seeds --help
     
 To only include certain Models (this should work using table names also, but it's not tested yet)
 
-    $ seed --include Model1,Model2,Model3
+    $ seeds --include Model1,Model2,Model3
 
-To only exclude certain Models (this should work using table names also, but it's not tested yet)
+To only exclude certain Models, takes precedence over --include (this should work using table names also, but it's not tested yet)
 
     $ seeds --exclude Model1,Model2,Model3
     
@@ -59,7 +59,7 @@ To rewrite or append to seeds.rb file.  If option is not passed, write is assume
     
 Example sending multiple options
 
-    $ seeds --drop-fields-common --drop-fields Field1 Field2 --include ModelName ModelName
+    $ seeds --drop-fields-common --drop-fields Field1,Field2 --include Model1,Model2
     
 ## Contributing
 
