@@ -1,20 +1,10 @@
 module SeedsDep
   class Sow
-    
-    @@models_to_dump = {}
-    @@drop_fields = []
-    @@file_mode = 'w'
-    
     def self.sow options = {}
-      puts "WARNING!!!!! You are using the deprecated syntax for this gem."
-      puts "No new features will be added to this syntax"
-      puts "Please visit http://github.com/coreydaley/seeds to view the current documentation."
-      if options.has_key?(:help)
-        help
-        exit
-      end
-      process_options options
-      generate_seeds
+      puts "WARNING!!! You are using the deprecated version of the Seeds gem"
+      puts "The old rake syntax for this command was awful and was deprecated"
+      puts "Please visit http://github.com/coreydaley/seeds or run 'seeds -h' at the command prompt to see the new syntax."
+      puts "Thank you for using the Seeds gem!"
     end
   end
 end

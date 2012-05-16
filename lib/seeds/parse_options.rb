@@ -4,10 +4,9 @@ module Seeds
       optparse = OptionParser.new do |opts|
         # Set a banner, displayed at the top
         # of the help screen.
-        opts.banner = "Usage: optparse1.rb [options] file1 file2 ..."
+        opts.banner = "Usage: seeds [options]"
         
         # Define the options, and what they do
-        @options[:verbose] = false
         opts.on( '-v', '--version', 'Output the version' ) do
           puts "Seeds v#{Seeds::VERSION}"
           exit!

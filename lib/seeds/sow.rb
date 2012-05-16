@@ -3,6 +3,7 @@ module Seeds
     #Initialize our options hash
     def initialize 
       @start_time = Time.now
+      @options = {}
     end
     
     def sow

@@ -2,16 +2,16 @@
 #This rake task and everything in the lib/old folder will be going away soon!
 require "seeds/version"
 require "seeds/old/sow"
-require "seeds/old/process_options"
-require "seeds/old/generate_seeds"
-require "seeds/old/help"
 module SeedsDep
   class Railtie < ::Rails::Railtie
     rake_tasks do
       namespace :seeds do
-        desc "Generate the seeds.rb file"
-        task :sow, [:options] => [:environment] do |t,args|
-          SeedsDep::Sow.sow args[:options] ? eval(args[:options]) : {}
+        desc "Generate the seeds.rb file (this syntax has been deprecated, use seeds -h for more info"
+        task :sow do
+          puts "WARNING!!! You are using the deprecated version of the Seeds gem"
+          puts "The old rake syntax for this command was awful and was deprecated"
+          puts "Please visit http://github.com/coreydaley/seeds or run 'seeds -h' at the command prompt to see the new syntax."
+          puts "Thank you for using the Seeds gem!"
         end # task
       end # namespace
     end # rake_tasks
