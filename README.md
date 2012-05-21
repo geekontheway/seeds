@@ -22,10 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-No need to fire up the rails console anymore, this baby runs as a rake task!
-The syntax is a little goofy because of the way rake takes in arguments,
-you are basically passing the entire hash as an argument, then it gets
-eval'd before being passed on to the Seeds Module.
+No need to fire up the rails console anymore, this baby runs directly from the command line using standard unix/linux sytanx.
 
 
 To create a seeds.rb file that includes data from all of your Models
