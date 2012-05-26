@@ -32,6 +32,17 @@ module Seeds
         opts.on('--drop-fields-common', 'Exclude commonly dropped fields (id, created_at, updated_at)') do
           @options[:drop_fields_common] = true
         end
+
+        # Truncate all Models before repopulating with data
+        @options[:truncate_models_all] = true
+        opts.on('--truncate-models-all', String, 'Truncate all tables before repopulating with data') do |options|
+          @options[:truncate_models_all] = options
+        end
+        
+        # Models that we want to truncate before repopulating
+        opts.on("--truncate-models Model1,Model2,Model3", Array, "Models that we want to truncate before we repopulate the data") do |options|
+          @options[:truncate_models] = options
+        end
         
         # Set the seeds.rb file write mode
         @options[:file_mode] = 'w'

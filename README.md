@@ -20,10 +20,15 @@ Or install it yourself as:
 
     $ gem install seeds
 
+
+## Updates and changes for this version
+
+The Seeds gem now truncates the data from existing models before import when running rake db:seeds
+You can prevent this behavior with a command line switch, and also have the ability to only truncate specific Models
+
 ## Usage
 
 No need to fire up the rails console anymore, this baby runs directly from the command line using standard unix/linux sytanx.
-
 
 To create a seeds.rb file that includes data from all of your Models
 
@@ -53,6 +58,14 @@ To rewrite or append to seeds.rb file.  If option is not passed, write is assume
 
     $ seeds --file-mode write # Write the file, this is the default
     $ seeds --file-model append # Append to the existing file, commonly used with --drop-fields-common
+    
+To prevent the truncating of all Models before data is imported
+    
+    $ seeds --truncate-models-all false
+    
+To only truncate specific Models before data is imported
+
+    $ seeds --truncate-models-all false --truncate-models Model1,Model2,Model3
     
 Example sending multiple options
 
